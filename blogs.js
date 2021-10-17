@@ -18,7 +18,6 @@ const posts = [
 ];
 
 const listPosts = () => {
-  posts.reverse(); // Postların son eklenenden başlayarak listelenmesi için reverse metodu kullanıldı
   posts.map((post) => {
     console.log(post.date, post.author, post.title);
   });
@@ -27,7 +26,7 @@ const listPosts = () => {
 function addPost(newPost) {
   return new Promise((resolve, reject) => {
     if (newPost) {
-      //if(!newPost) yazarak çalıştırdığımızda catch ile reject değeri olan "Post eklenemedi" konsola yazdırılıyor
+      //if(!newPost) olarak değiştirdiğimizde catch ile reject değeri olan "Post eklenemedi" konsola yazdırılıyor
       posts.push(newPost);
       resolve(posts);
     } else {
@@ -45,10 +44,13 @@ async function showPosts() {
       date: "Tarih: 01.04.2021",
     });
 
+    posts.reverse(); // Postların son eklenenden başlayarak listelenmesi için reverse metodu kullanıldı
+
     listPosts();
   } catch (e) {
     console.log(e);
   }
 }
-
+listPosts();
+console.log("----------------------------------------------------------------");
 showPosts();
